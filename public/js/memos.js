@@ -6,7 +6,7 @@ console.log(
 photos();
 //查询所有用户api “https://memos.smitten.top/api/memo/all?tag=相册”
 function photos() {
-  fetch("https://memos.smitten.top/api/memo?creatorId=1&tag=相册")
+  fetch("https://memos-zyx.zeabur.app/api/memo?creatorId=1&tag=相册")
     .then((res) => res.json())
     .then((data) => {
       // 记得修改memos地址
