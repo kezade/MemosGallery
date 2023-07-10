@@ -16,19 +16,21 @@ function photos() {
         imgs = imgs.concat(item.content.match(/\!\[.*?\]\(.*?\)/g));
       });
       imgs.forEach((item) => {
-        let img = item.replace(/!\[.*?\]\((.*?)\)/g, "$1"),
-          time,
-          title,
-          tat = item.replace(/!\[(.*?)\]\(.*?\)/g, "$1");
-        if (tat.indexOf(" ") != -1) {
-          time = tat.split(" ")[0];
-          title = tat.split(" ")[1];
-        } else title = tat;
-
-        html += `<div class="gallery-photo"><a href="${img}" data-fancybox="gallery" class="fancybox" data-thumb="${img}"><img class="photo-img" loading='lazy' decoding="async" data-lazyload="${img}" src="public/load.svg"></a>`;
-        title ? (html += `<span class="photo-title">${title}</span>`) : "";
-        time ? (html += `<span class="photo-time">${time}</span>`) : "";
-        html += `</div>`;
+        if(item){
+          let img = item.replace(/!\[.*?\]\((.*?)\)/g, "$1"),
+            time,
+            title,
+            tat = item.replace(/!\[(.*?)\]\(.*?\)/g, "$1");
+          if (tat.indexOf(" ") != -1) {
+            time = tat.split(" ")[0];
+            title = tat.split(" ")[1];
+          } else title = tat;
+  
+          html += `<div class="gallery-photo"><a href="${img}" data-fancybox="gallery" class="fancybox" data-thumb="${img}"><img class="photo-img" loading='lazy' decoding="async" data-lazyload="${img}" src="public/load.svg"></a>`;
+          title ? (html += `<span class="photo-title">${title}</span>`) : "";
+          time ? (html += `<span class="photo-time">${time}</span>`) : "";
+          html += `</div>`;
+        }
       });
 
       document.querySelector(".gallery-photos.page").innerHTML = html;
