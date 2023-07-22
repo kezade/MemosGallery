@@ -4,15 +4,15 @@ console.log(
   "background: #fadfa3; padding:5px 0;"
 );
 photos();
-//查询所有用户api “https://memos.smitten.top/api/memo/all?tag=相册”
+//查询所有用户api “https://memos.smitten.top/api/v1/memo/all?tag=相册”
 function photos() {
-  fetch("https://memos-zyx.zeabur.app/api/memo?creatorId=1&tag=相册")
+  fetch("https://memos-zyx.zeabur.app/api/v1/memo?creatorId=1&tag=相册")
     .then((res) => res.json())
     .then((data) => {
       // 记得修改memos地址
       let html = "",
         imgs = [];
-      data.data.forEach((item) => {
+      data.forEach((item) => {
         imgs = imgs.concat(item.content.match(/\!\[.*?\]\(.*?\)/g));
       });
       imgs.forEach((item) => {
